@@ -1,0 +1,95 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/objs/a/b/c/main.o
+ .data          0x00000000        0x0 build/objs/a/b/c/main.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/main.o
+ .note.GNU-stack
+                0x00000000        0x0 build/objs/a/b/c/main.o
+ .text          0x00000000        0x0 build/objs/a/b/c/startup.o
+ .data          0x00000000        0x0 build/objs/a/b/c/startup.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/startup.o
+ .note.GNU-stack
+                0x00000000        0x0 build/objs/a/b/c/startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x00000000         0x01000000         xr
+RAM              0x01000000         0x01000000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/objs/a/b/c/main.o
+LOAD build/objs/a/b/c/startup.o
+
+.text           0x00000000       0x86
+ *(.text.start)
+ .text.start    0x00000000       0x5e build/objs/a/b/c/startup.o
+                0x00000000                _start
+ *(.text)
+ *(.text.*)
+ .text.startup.main
+                0x0000005e       0x28 build/objs/a/b/c/main.o
+                0x0000005e                main
+
+.rela.dyn       0x00000088        0x0
+ .rela.text.start
+                0x00000088        0x0 build/objs/a/b/c/main.o
+
+.rodata
+ *(.rodata)
+ *(.rodata.*)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array
+ *(.init_array)
+ *(.init_array.*)
+
+.fini_array
+ *(.fini_array)
+ *(.fini_array.*)
+                0x01000800                        __global_pointer$ = (ORIGIN (RAM) + 0x800)
+
+.data           0x01000000        0x0 load address 0x00000088
+                0x01000000                        __data_start = .
+ *(.data)
+ *(.data.*)
+ *(.sdata)
+ *(.sdata.*)
+                0x01000000                        __data_end = .
+                0x00000088                        __data_load_start = LOADADDR (.data)
+
+.bss            0x01000000        0x0 load address 0x00000088
+                0x01000000                        __bss_start = .
+ *(.bss)
+ *(.bss.*)
+ *(COMMON)
+ *(.sbss)
+ *(.sbss.*)
+                0x01000000                        __bss_end = .
+                0x02000000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+                0x01fff000                        __heap_limit = (__stack_top - 0x1000)
+                0x01000000                        _end = .
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/blink.elf elf32-littleriscv)
+
+.comment        0x00000000       0x1b
+ .comment       0x00000000       0x1b build/objs/a/b/c/main.o
+                                 0x1c (size before relaxing)
+ .comment       0x0000001b        0x0 build/objs/a/b/c/startup.o
+                                 0x1c (size before relaxing)
+
+.riscv.attributes
+                0x00000000       0x28
+ .riscv.attributes
+                0x00000000       0x28 build/objs/a/b/c/main.o
+ .riscv.attributes
+                0x00000028       0x28 build/objs/a/b/c/startup.o

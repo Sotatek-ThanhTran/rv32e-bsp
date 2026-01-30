@@ -1,0 +1,34 @@
+# Example Makefile Template
+# Copy this file to your new example directory and customize as needed
+
+# Project name (required)
+PROJECT := your-example-name
+
+# Source files (required)
+SRCS = \
+	main.c
+
+# Optional: Additional source files
+# SRCS += additional_file.c
+
+# Optional: Use drivers from shared/drivers/ directory
+# DRIVERS = i2c_driver.c spi_driver.c
+# (This will automatically add drivers to VPATH)
+
+# Optional: Custom include paths (default is ../../shared/include)
+# INCLUDES = ../../shared/include custom/path
+
+# Optional: Custom defines
+# DEFINES = DEBUG=1 FEATURE_X=1
+
+# Optional: Custom linker script (default is ../linker.ld)
+# LINKER_SCRIPT = linker.ld
+
+# Optional: Enable stdlib (default is -nostdlib)
+# USE_STDLIB = 1
+
+# Optional: Custom build directory (default is build)
+# BUILD_DIR = build
+
+# Include common Makefile (must be last)
+include ../shared/common.mk

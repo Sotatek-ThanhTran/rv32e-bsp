@@ -1,0 +1,31 @@
+{
+    "files.associations": {
+        "*.tcc": "c"
+    },
+    // C/C++ formatting - Global settings
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    // Global editor format settings
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    // Language-specific settings
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    // File encoding
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    // Editor settings
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+}
